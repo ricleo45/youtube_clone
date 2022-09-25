@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d4409d57-7119-4339-bfae-1f3a18bc6341",
+		"_postman_id": "adaf46e9-45f2-418a-ad2e-13f198e3cbf5",
 		"name": "DRF_JWT_Backend",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21314921"
 	},
 	"item": [
 		{
@@ -114,15 +115,34 @@
 			]
 		},
 		{
-			"name": "Cars",
+			"name": "youtube_clone_comments",
 			"item": [
 				{
-					"name": "GET all cars (unprotected)",
+					"name": "GET all comments(unprotected)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0NDMwNzI2LCJpYXQiOjE2NjM1NjY3MjYsImp0aSI6IjlkZDA0YzIxOGNmNzQ1Y2ZiZmM5Y2IzMGFmMjkwMzA2IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJzdXBlcnVzZXIiLCJmaXJzdF9uYW1lIjoiIn0.9sBEZC34GMigNP0DzzXaTUStGRtYI-SsA8vXW5AlEWE",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/cars/all/",
+							"raw": "http://127.0.0.1:8000/comments/all",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -132,9 +152,50 @@
 							],
 							"port": "8000",
 							"path": [
-								"api",
-								"cars",
-								"all",
+								"comments",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET comments by video_id(unprotected)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0NDMyNzQ2LCJpYXQiOjE2NjM1Njg3NDYsImp0aSI6ImI4ZGMxYmNkMTcxMDQ4Yjk5ZmVkY2I3ODk1MTQ1Yzg5IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJzdXBlcnVzZXIiLCJmaXJzdF9uYW1lIjoiIn0.RlEZz6jOIVTAVOJU1qe0P8PcwGBqy_Kw9YXcviHVYyA",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"video_id\" : \"abc456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/comments/lol43/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"comments",
+								"lol43",
 								""
 							]
 						}
@@ -142,7 +203,7 @@
 					"response": []
 				},
 				{
-					"name": "GET cars for user (protected)",
+					"name": "GET comments for user (protected)",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -184,7 +245,7 @@
 					"response": []
 				},
 				{
-					"name": "POST new car for user (protected)",
+					"name": "POST new comment for user (protected)",
 					"request": {
 						"method": "POST",
 						"header": [

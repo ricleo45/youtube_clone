@@ -1,9 +1,12 @@
+from distutils.cmd import Command
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Comment
 from .serializers import CommentSerializer
+
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
@@ -13,6 +16,16 @@ from .serializers import CommentSerializer
 def get_all_comments(request):
     comment = Comment.objects.all()
     serializer = CommentSerializer(comment, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def video_id_comments(request, video_id):
+    if request.method == 'GET':
+        comments = Comment.objects.filter(video_id=video_id)
+        serializer = CommentSerializer(comments, many=True)
+        # serializer = CommentSerializer(video_id,many=True)
+        # video_id = Comment.objects.filter(result=request.video_id)
     return Response(serializer.data)
 
 
@@ -31,3 +44,7 @@ def user_comments(request):
         comment = Comment.objects.filter(user_id=request.user.id)
         serializer = CommentSerializer(comment, many=True)
         return Response(serializer.data)
+
+    
+
+
