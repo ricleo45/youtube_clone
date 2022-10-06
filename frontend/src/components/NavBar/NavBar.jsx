@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
+import SearchBar from "../../pages/SearchBar/SearchBar";
+import videos from "../../App"
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
@@ -12,10 +14,11 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+            <b>YouTube_Clone</b>
           </Link>
         </li>
         <li>
+        <SearchBar videos={videos} />
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (

@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 node_modules
+YouTubeClone_Flex_Frontend
+YouTubeClone_Frontend_Framework
+localKey.js
