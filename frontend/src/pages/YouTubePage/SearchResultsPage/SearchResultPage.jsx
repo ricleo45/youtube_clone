@@ -1,8 +1,34 @@
-import DisplayVideo from "../VideoPage/VideoPage";
+import React from 'react';
 
 
 
-const DisplaySearchResults = (props) => {
-    <DisplayVideo videos={videos} getVideos={getVideos} />
+
+
+
+
+const SearchResultPage = (props) => {
+    return(
+        <div className="RelatedVideos">
+            <h2>Related Videos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thumbnail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.searchTerm.map((video)=>{
+                        return (
+                            <tr key={video.id}>
+                                <td>{video.title}</td>
+                                <td>{video.thumbnail}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </div>
+    )
 }
-export default DisplaySearchResults;
+
+export default SearchResultPage
